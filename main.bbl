@@ -7,8 +7,7 @@
 \providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
 \providecommand{\BIBentryALTinterwordstretchfactor}{4}
 \providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
-  \fontdimen4\font\relax}
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus \fontdimen4\font\relax}
 \providecommand{\BIBforeignlanguage}[2]{{%
 \expandafter\ifx\csname l@#1\endcsname\relax
 \typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
@@ -22,69 +21,36 @@
 \BIBdecl
 
 \bibitem{choi2020}
-W.~Choi and J.~W.-K. Hong, ``Performance evaluation of ethereum private and
-  consortium blockchain: Poa vs. pos,'' in \emph{Proceedings of NOMS 2020 -
-  2020 IEEE/IFIP Network Operations and Management Symposium}.\hskip 1em plus
-  0.5em minus 0.4em\relax IEEE, 2020, pp. 1--6.
+W.~Choi and J.~W.-K. Hong, ``Performance evaluation of ethereum private and consortium blockchain: Poa vs. pos,'' in \emph{Proceedings of NOMS 2020 - 2020 IEEE/IFIP Network Operations and Management Symposium}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1--6.
 
 \bibitem{rebello2020}
-G.~A.~F. Rebello, G.~F. Camilo, L.~C.~B. Guimaraes, and F.~L. Koch,
-  ``Performance evaluation of proof-of-authority and proof-of-stake consensus
-  algorithms in private ethereum networks,'' in \emph{Proceedings of the IEEE
-  International Conference on Blockchain (Blockchain)}.\hskip 1em plus 0.5em
-  minus 0.4em\relax IEEE, 2020, pp. 1--8.
+G.~A.~F. Rebello, G.~F. Camilo, L.~C.~B. Guimaraes, and F.~L. Koch, ``Performance evaluation of proof-of-authority and proof-of-stake consensus algorithms in private ethereum networks,'' in \emph{Proceedings of the IEEE International Conference on Blockchain (Blockchain)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1--8.
 
 \bibitem{arslan2020}
-C.~Arslan, S.~Sipahioğlu, E.~Şafak, and M.~Gözütok, ``Comparative analysis
-  and modern applications of consensus algorithms in blockchain networks,''
-  \emph{IEEE Access}, vol.~8, pp. 105\,507--105\,520, 2020.
+C.~Arslan, S.~Sipahioğlu, E.~Şafak, and M.~Gözütok, ``Comparative analysis and modern applications of consensus algorithms in blockchain networks,'' \emph{IEEE Access}, vol.~8, pp. 105\,507--105\,520, 2020.
 
 \bibitem{li2021}
-R.~Li, ``Comparative analysis and future directions of blockchain consensus
-  algorithms: Pow, pos, bft, and dag,'' in \emph{Proceedings of the 2021
-  International Conference on Computing, Communication, and Security
-  (ICCCS)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2021, pp. 35--39.
+R.~Li, ``Comparative analysis and future directions of blockchain consensus algorithms: Pow, pos, bft, and dag,'' in \emph{Proceedings of the 2021 International Conference on Computing, Communication, and Security (ICCCS)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2021, pp. 35--39.
 
 \bibitem{kumar2020}
-D.~K. K, D.~N. Duraimutharasan, S.~H.~J. Shahana, and S.~S. Kumar,
-  ``Performance evaluation of blockchain using hyperledger caliper,'' in
-  \emph{Proceedings of the 2020 6th International Conference on Advanced
-  Computing and Communication Systems (ICACCS)}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2020, pp. 1--6.
+D.~K. K, D.~N. Duraimutharasan, S.~H.~J. Shahana, and S.~S. Kumar, ``Performance evaluation of blockchain using hyperledger caliper,'' in \emph{Proceedings of the 2020 6th International Conference on Advanced Computing and Communication Systems (ICACCS)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1--6.
 
 \bibitem{kaushal2020}
-R.~K. Kaushal and N.~Kumar, ``Exploring hyperledger caliper for performance
-  benchmarking of blockchain,'' in \emph{Proceedings of the 2020 International
-  Conference on Computing for Sustainable Global Development (INDIACom)}.\hskip
-  1em plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1052--1056.
+R.~K. Kaushal and N.~Kumar, ``Exploring hyperledger caliper for performance benchmarking of blockchain,'' in \emph{Proceedings of the 2020 International Conference on Computing for Sustainable Global Development (INDIACom)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1052--1056.
 
 \bibitem{sharma2020}
-R.~Sharma, A.~Bansal, and S.~Bansal, ``Performance analysis of private ethereum
-  blockchain using consensus algorithms,'' \emph{Procedia Computer Science},
-  vol. 173, pp. 341--350, 2020.
+R.~Sharma, A.~Bansal, and S.~Bansal, ``Performance analysis of private ethereum blockchain using consensus algorithms,'' \emph{Procedia Computer Science}, vol. 173, pp. 341--350, 2020.
 
 \bibitem{ali2020}
-S.~Ali, M.~I. Aslam, and M.~Aslam, ``Evaluation of blockchain consensus
-  algorithms for performance and scalability,'' in \emph{Proceedings of the
-  2020 International Conference on Computing, Networking and Communications
-  (ICNC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1--6.
+S.~Ali, M.~I. Aslam, and M.~Aslam, ``Evaluation of blockchain consensus algorithms for performance and scalability,'' in \emph{Proceedings of the 2020 International Conference on Computing, Networking and Communications (ICNC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1--6.
 
 \bibitem{gaikwad2019}
-S.~Gaikwad and K.~Patel, ``Blockchain based academic certificate verification
-  system,'' in \emph{Proceedings of the 2019 3rd International Conference on
-  Computing Methodologies and Communication (ICCMC)}.\hskip 1em plus 0.5em
-  minus 0.4em\relax IEEE, 2019, pp. 1216--1220.
+S.~Gaikwad and K.~Patel, ``Blockchain based academic certificate verification system,'' in \emph{Proceedings of the 2019 3rd International Conference on Computing Methodologies and Communication (ICCMC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2019, pp. 1216--1220.
 
 \bibitem{singh2019}
-A.~Singh and P.~Chatterjee, ``Securing academic records using blockchain
-  technology,'' in \emph{Proceedings of the 2019 IEEE International Conference
-  on Electrical, Computer and Communication Technologies (ICECCT)}.\hskip 1em
-  plus 0.5em minus 0.4em\relax IEEE, 2019, pp. 1--6.
+A.~Singh and P.~Chatterjee, ``Securing academic records using blockchain technology,'' in \emph{Proceedings of the 2019 IEEE International Conference on Electrical, Computer and Communication Technologies (ICECCT)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2019, pp. 1--6.
 
 \bibitem{wicaksono2025}
-P.~Wicaksono, P.~Hatta, and Y.~H. Aristyagama, ``Comparative analysis of pos
-  and poa consensus in ethereum environment for blockchain-based academic
-  transcript systems,'' \emph{Bulletin of Electrical Engineering and
-  Informatics}, vol.~14, no.~3, pp. 2380--2392, June 2025.
+P.~Wicaksono, P.~Hatta, and Y.~H. Aristyagama, ``Comparative analysis of pos and poa consensus in ethereum environment for blockchain-based academic transcript systems,'' \emph{Bulletin of Electrical Engineering and Informatics}, vol.~14, no.~3, pp. 2380--2392, June 2025.
 
 \end{thebibliography}
