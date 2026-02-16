@@ -198,12 +198,12 @@ Data was stored in PostgreSQL for further analysis.
 
 \subsection{Throughput and Saturation Point}
 
-Throughput Step testing increased load from 5 to 100 TPS. Results showed that in 3-node topology, PoA began experiencing saturation at load $\approx$30 TPS, while PoS maintained linearity up to $\approx$60 TPS before saturation. PoS achieved peak throughput 2× higher than PoA in this configuration.
+Throughput Step testing increased load from 5 to 100 TPS. Results showed that in 10-node topology, PoA began experiencing saturation at load $\approx$30--40 TPS, while PoS maintained linearity up to $\approx$60 TPS before saturation. PoS achieved peak throughput higher than PoA in this configuration.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\columnwidth]{throughput_curve_3_Nodes.png}
-    \caption{Throughput Curve on 3-Node Topology}
+    \includegraphics[width=0.9\columnwidth]{throughput_curve_zoomed_10_Nodes.png}
+    \caption{Throughput Curve on 10-Node Topology}
     \label{fig:throughput_curve}
 \end{figure}
 
@@ -224,8 +224,8 @@ Latency measurement was conducted under steady-state conditions. The latency tra
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\columnwidth]{latency_tradeoff_3_Nodes.png}
-    \caption{Latency Trade-off (Hockey Stick Curve)}
+    \includegraphics[width=0.9\columnwidth]{latency_tradeoff_lowload_10_Nodes.png}
+    \caption{Latency Trade-off (Hockey Stick Curve) on 10-Node Topology}
     \label{fig:latency_tradeoff}
 \end{figure}
 
@@ -242,11 +242,20 @@ Efficiency was measured based on TPS ratio per percent CPU usage, and scalabilit
 
 \subsection{Analysis}
 
-Data shows an interesting phenomenon where PoS actually achieves 2× higher saturation throughput than PoA at small scale (3 Nodes). This is suspected to be caused by Block Time limitations. PoA with 5-second blocks has a physical limit on gas amount/block per time unit. Conversely, PoS with 12-second slots, although the interval is longer, allows more efficient transaction batching with the same gas limit per block, producing higher aggregate throughput before RPC saturation.
+Data shows an interesting phenomenon where PoS actually achieves higher saturation throughput than PoA at 10 Nodes scale. This is suspected to be caused by Block Time limitations. PoA with 5-second blocks has a physical limit on gas amount/block per time unit. Conversely, PoS with 12-second slots, although the interval is longer, allows more efficient transaction batching with the same gas limit per block, producing higher aggregate throughput before RPC saturation.
 
-PoA shows clear superiority in responsiveness aspect. PoA average latency (4.6 seconds) is very close to block time (5 seconds), showing minimal inefficiency. Conversely, PoS (8 seconds) suffers from inherent latency from slot mechanism and initial probabilistic finality. For academic service systems, this 3--4 second difference is significant in terms of UX (User Experience).
+PoA shows clear superiority in responsiveness aspect. PoA average latency (4.6 seconds) is very close to block time (5 seconds), showing minimal inefficency. Conversely, PoS (8 seconds) suffers from inherent latency from slot mechanism and initial probabilistic finality. For academic service systems, this 3--4 second difference is significant in terms of UX (User Experience).
 
 PoA excels in resource efficiency. PoS "pays" for its decentralization with expensive computation for attestation. Both systems' stability proved robust in long-term testing (Soak Test), with no indication of memory leaks found.
+
+The overall performance profile is summarized in Figure \ref{fig:radar_chart}, showing the trade-off between the two mechanisms across five key dimensions.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{radar_chart_comparison.png}
+    \caption{Radar Chart Comparison: PoA vs PoS Multidimensional Trade-off}
+    \label{fig:radar_chart}
+\end{figure}
 
 \subsection{Synthesis: Relevance for DChain}
 
