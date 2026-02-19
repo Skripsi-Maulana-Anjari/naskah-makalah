@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1771262616.81653 "main.aux" "main.bbl" "main" 1771262618.50166 0
+["bibtex main"] 1771409530.09329 "main.aux" "main.bbl" "main" 1771409532.56465 0
   "./references.bib" 1770735627.91933 52036 e67407fa3ed4af9e22b628896f845910 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1771262618.37012 4040 e520287ca4307850b9757e2515aeb0d1 "pdflatex"
+  "main.aux" 1771409532.31817 4055 8478db3ab52d04028f62f979d851a8f2 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1771262616.88784 "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" "main.pdf" "main" 1771262618.5018 0
+["pdflatex"] 1771409530.17862 "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" "main.pdf" "main" 1771409532.56498 0
   "/etc/texmf/web2c/texmf.cnf" 1766247480.41787 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" 1771262616.65413 23759 89b82b6f96e7293ab561ea8928b7ef28 ""
+  "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" 1771409527.34608 24085 20470507427b83c16c23ef612b1974e8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -160,9 +160,9 @@
   "IEEEtran.cls" 1766056377.35357 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "efficiency_resource_cpu.png" 1770735032.97834 111293 8e91631992f1d030714c2714813d6d0d ""
   "latency_tradeoff_lowload_10_Nodes.png" 1771262601.84504 160583 d1811fcc7e0f286d194ad2801e30926f ""
-  "main.aux" 1771262618.37012 4040 e520287ca4307850b9757e2515aeb0d1 "pdflatex"
-  "main.bbl" 1771262616.87512 4125 b683576f58e2e0a1e618bb8424a7dfb5 "bibtex main"
-  "main.tex" 1771262616.65413 23759 89b82b6f96e7293ab561ea8928b7ef28 ""
+  "main.aux" 1771409532.31817 4055 8478db3ab52d04028f62f979d851a8f2 "pdflatex"
+  "main.bbl" 1771409530.17009 4125 b683576f58e2e0a1e618bb8424a7dfb5 "bibtex main"
+  "main.tex" 1771409527.34608 24085 20470507427b83c16c23ef612b1974e8 ""
   "optimal_tps_comparison.png" 1770735025.54989 103677 78623d40f7207ba1f15552b4d5b4547b ""
   "radar_chart_comparison.png" 1770735035.80888 491100 2a15aed8482871135c98447db68dbdff ""
   "throughput_curve_zoomed_10_Nodes.png" 1771262601.84311 170689 a9d640b5aa015208812682289b8e04e5 ""

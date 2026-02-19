@@ -72,7 +72,7 @@ This research fills these gaps by expanding testing scope to include resource us
 
 \section{Proposed System and Methodology}
 
-\subsection{Experimental Setup}
+\subsection{Infrastructure and Software Stack}
 
 The research infrastructure consists of:
 \begin{itemize}
@@ -95,7 +95,7 @@ The experimental topology employs a 10-node configuration consisting of:
 \begin{itemize}
     \item \textbf{Control Plane}: Orchestrator sending transaction load (RPC Load) to observer nodes using Hyperledger Caliper
     \item \textbf{Validator Nodes (Signers/Proposers)}: 5 main nodes (V1--V5) with rights to validate transactions and compose new blocks. In PoA consensus, these nodes connect in ring topology for Round-Robin proposer rotation; in PoS, selection is random
-    \item \textbf{Observer Nodes (Non-Validators)}: 5 additional nodes (O1--O5) that do not produce blocks but participate in data synchronization through gossip protocol (P2P). These nodes simulate consortium member institutions holding ledger copies without validation rights, functioning as gateways for transactions sent by Control Plane
+    \item \textbf{Observer Nodes (Non-Validators)}: 5 additional nodes (O1--O5) that do not produce blocks but participate in data synchronization through gossip protocol (P2P). These nodes simulate consortium member institutions holding ledger copies without validation rights, functioning as gateways for transactions sent by Control Plane. The overall experimental topology is illustrated in Figure \ref{fig:experimental_topology}.
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -198,7 +198,7 @@ Data was stored in PostgreSQL for further analysis.
 
 \subsection{Throughput and Saturation Point}
 
-Throughput Step testing increased load from 5 to 100 TPS. Results showed that in 10-node topology, PoA began experiencing saturation at load $\approx$30--40 TPS, while PoS maintained linearity up to $\approx$60 TPS before saturation. PoS achieved peak throughput higher than PoA in this configuration.
+Throughput Step testing increased load from 5 to 100 TPS. Results showed that in 10-node topology, PoA began experiencing saturation at load $\approx$30--40 TPS, while PoS maintained linearity up to $\approx$60 TPS before saturation (see Figure \ref{fig:throughput_curve}). PoS achieved peak throughput higher than PoA in this configuration, with the comparison of optimal stability points summarized in Figure \ref{fig:optimal_tps}.
 
 \begin{figure}[htbp]
     \centering
@@ -216,7 +216,7 @@ Throughput Step testing increased load from 5 to 100 TPS. Results showed that in
 
 \subsection{Transaction Latency}
 
-Latency measurement was conducted under steady-state conditions. The latency trade-off graph shows the relationship between load (TPS) and response time.
+Latency measurement was conducted under steady-state conditions. The latency trade-off graph (Figure \ref{fig:latency_tradeoff}) shows the relationship between load (TPS) and response time.
 \begin{itemize}
     \item \textbf{Baseline Latency}: At low load ($<15$ TPS), PoA has average latency of 4--5 seconds, while PoS ranges 7--8 seconds
     \item \textbf{Latency Under Load}: When approaching saturation point, PoS latency increases sharply compared to PoA which tends to have more stable increases
@@ -231,7 +231,7 @@ Latency measurement was conducted under steady-state conditions. The latency tra
 
 \subsection{Resource Efficiency and Scalability}
 
-Efficiency was measured based on TPS ratio per percent CPU usage, and scalability was measured by adding number of client workers. Results showed PoA has much higher CPU efficiency. PoS has significant computational overhead. On client scalability side, both consensuses experienced performance degradation when number of workers increased from 1 to 5, indicating bottleneck on client/RPC side.
+Efficiency was measured based on TPS ratio per percent CPU usage, and scalability was measured by adding number of client workers. Results showed PoA has much higher CPU efficiency, as visualized in Figure \ref{fig:efficiency_cpu}. PoS has significant computational overhead. On client scalability side, both consensuses experienced performance degradation when number of workers increased from 1 to 5, indicating bottleneck on client/RPC side.
 
 \begin{figure}[htbp]
     \centering
@@ -293,6 +293,8 @@ This research fills the gap (research gap) with:
     \item \textbf{Real Geographic Topology}: Simulation of inter-campus latency (UGM, UI, ITB), not localhost
     \item \textbf{Stability Analysis}: Adding Soak Test to prove system resilience
 \end{enumerate}
+
+In summary, the comprehensive benchmarking results provide a clear technical justification for DChain's strategic consensus roadmap. By filling the research gaps with geographically distributed testing and functionally relevant workloads, this study establishes that while PoS offers superior raw throughput, PoA's latency and resource efficiency are more aligned with the immediate needs of academic certificate verification. This empirical foundation ensures that any future protocol migration within the national consortium can be executed with a precise understanding of the performance trade-offs, ultimately sustaining the quality of digital services in the Indonesian higher education ecosystem.
 
 \section{Conclusion}
 
