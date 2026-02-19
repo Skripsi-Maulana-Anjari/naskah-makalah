@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1771409530.09329 "main.aux" "main.bbl" "main" 1771409532.56465 0
+["bibtex main"] 1771511488.0195 "main.aux" "main.bbl" "main" 1771511489.71806 0
   "./references.bib" 1770735627.91933 52036 e67407fa3ed4af9e22b628896f845910 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1771409532.31817 4055 8478db3ab52d04028f62f979d851a8f2 "pdflatex"
+  "main.aux" 1771511489.5884 4055 69f2660d4ca0887aa49f72c83926ce29 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1771409530.17862 "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" "main.pdf" "main" 1771409532.56498 0
+["pdflatex"] 1771511488.07647 "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" "main.pdf" "main" 1771511489.71821 0
   "/etc/texmf/web2c/texmf.cnf" 1766247480.41787 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" 1771409527.34608 24085 20470507427b83c16c23ef612b1974e8 ""
+  "/home/maul/Documents/Skripsi/naskah-makalah/main.tex" 1771511486.14783 25024 4b25a572d878201d4adef39a0ae95890 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -31,12 +31,16 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1246382020 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm" 1136768653 1524 d89e2d087a9828407a196f428428ef4a ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1136768653 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1136768653 1116 25a7bf822c58caf309a702ef79f4afbb ""
@@ -160,9 +164,9 @@
   "IEEEtran.cls" 1766056377.35357 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "efficiency_resource_cpu.png" 1770735032.97834 111293 8e91631992f1d030714c2714813d6d0d ""
   "latency_tradeoff_lowload_10_Nodes.png" 1771262601.84504 160583 d1811fcc7e0f286d194ad2801e30926f ""
-  "main.aux" 1771409532.31817 4055 8478db3ab52d04028f62f979d851a8f2 "pdflatex"
-  "main.bbl" 1771409530.17009 4125 b683576f58e2e0a1e618bb8424a7dfb5 "bibtex main"
-  "main.tex" 1771409527.34608 24085 20470507427b83c16c23ef612b1974e8 ""
+  "main.aux" 1771511489.5884 4055 69f2660d4ca0887aa49f72c83926ce29 "pdflatex"
+  "main.bbl" 1771511488.07015 4125 b683576f58e2e0a1e618bb8424a7dfb5 "bibtex main"
+  "main.tex" 1771511486.14783 25024 4b25a572d878201d4adef39a0ae95890 ""
   "optimal_tps_comparison.png" 1770735025.54989 103677 78623d40f7207ba1f15552b4d5b4547b ""
   "radar_chart_comparison.png" 1770735035.80888 491100 2a15aed8482871135c98447db68dbdff ""
   "throughput_curve_zoomed_10_Nodes.png" 1771262601.84311 170689 a9d640b5aa015208812682289b8e04e5 ""
