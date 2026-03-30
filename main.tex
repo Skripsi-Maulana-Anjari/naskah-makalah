@@ -47,7 +47,7 @@
 \maketitle
 
 \begin{abstract}
-This research evaluates and compares the performance of Proof of Authority (PoA) and Proof of Stake (PoS) consensus mechanisms within DChain, Indonesia's national blockchain infrastructure for higher education electronic certificates. The study is motivated by DChain's planned migration from PoA to PoS to enhance network decentralization and scalability. We employed a quantitative experimental approach through computerized benchmarking using Hyperledger Caliper in a distributed multi-node environment (Docker and Kubernetes). Testing was conducted across various scenarios including throughput, latency, computational resource efficiency, and network stability (soak test). Results indicate that Proof of Stake possesses higher throughput capacity ($\approx$60 TPS) compared to PoA ($\approx$30--40 TPS). However, PoA proved superior in responsiveness, with average latency of 4.6 seconds compared to 8 seconds for PoS, and demonstrated better CPU utilization efficiency. We conclude that the PoA consensus mechanism remains the most optimal solution for DChain's current requirements due to the user-interactive nature of academic services that necessitate rapid response, while PoS offers scalability potential for long-term development.
+DChain is Indonesia's national blockchain infrastructure for higher education electronic certificates, currently operating on Proof of Authority (PoA) with planned migration to Proof of Stake (PoS) to enhance decentralization. This research aims to evaluate and compare the performance of both consensus mechanisms to determine migration feasibility. We employed a quantitative experimental approach through computerized benchmarking using Hyperledger Caliper in a distributed multi-node environment (Docker and Kubernetes). Testing was conducted across various scenarios including throughput, latency, computational resource efficiency, and network stability (soak test). Results indicate that Proof of Stake possesses higher throughput capacity ($\approx$60 TPS) compared to PoA ($\approx$30--40 TPS). However, PoA proved superior in responsiveness, with average latency of 4.6 seconds compared to 8 seconds for PoS, and demonstrated better CPU utilization efficiency. We conclude that the PoA consensus mechanism remains the most optimal solution for DChain's current requirements due to the user-interactive nature of academic services that necessitate rapid response, while PoS offers scalability potential for long-term development.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -99,90 +99,37 @@ Software stack includes:
     \item Orchestration: Kubernetes (k3s) + Kurtosis (for PoS deployment)
 \end{itemize}
 
+The technical implementation uses a combination of existing open-source software (given) and components developed by the researcher. Given software includes Geth, Prysm, Kurtosis, Hyperledger Caliper, and Kubernetes. Self-developed components include bash and Docker-based PoA network generation scripts, Starlark configuration for PoS network orchestration, automated benchmarking pipeline (\texttt{run\_pipeline.sh}), and centralized monitoring system configuration with Dual-Mode Scraping mechanism. All source code is publicly available at the repository listed in the Acknowledgment section.
+
 \subsection{Network Topology}
 
-The experimental topology employs a 10-node configuration consisting of:
+The experimental topology employs a 10-node configuration distributed across 6 VPS instances, as illustrated in Figure \ref{fig:testbed_architecture}. The infrastructure consists of:
 \begin{itemize}
-    \item \textbf{Control Plane}: Orchestrator sending transaction load (RPC Load) to observer nodes using Hyperledger Caliper
-    \item \textbf{Validator Nodes (Signers/Proposers)}: 5 main nodes (V1--V5) with rights to validate transactions and compose new blocks. In PoA consensus, these nodes connect in ring topology for Round-Robin proposer rotation; in PoS, selection is random
-    \item \textbf{Observer Nodes (Non-Validators)}: 5 additional nodes (O1--O5) that do not produce blocks but participate in data synchronization through gossip protocol (P2P). These nodes simulate consortium member institutions holding ledger copies without validation rights, functioning as gateways for transactions sent by Control Plane. The overall experimental topology is illustrated in Figure \ref{fig:experimental_topology}.
+    \item \textbf{Control Plane VPS}: Orchestration center running Kubernetes Master, Docker, Prometheus (metrics collector), Grafana (visualization), Ethstats (Ethereum network monitoring), Kurtosis (PoS orchestration), PostgreSQL (data storage), and Hyperledger Caliper (transaction load generator)
+    \item \textbf{Validator Nodes}: 5 nodes (black border) with rights to validate transactions and produce new blocks. In PoA consensus, these nodes use Round-Robin proposer rotation; in PoS, validator selection is randomized
+    \item \textbf{Observer Nodes}: 5 nodes (red border) that participate in data synchronization without validation rights, functioning as RPC gateways for transactions sent by Caliper
 \end{itemize}
+
+Each worker VPS runs Kubernetes Worker, Pushgateway, Node Exporter, and cAdvisor to collect performance metrics forwarded to Prometheus on the Control Plane. The orange dashed arrows indicate RPC Load flow from Hyperledger Caliper to Observer Nodes for benchmarking tests.
 
 \begin{figure}[htbp]
     \centering
-    \resizebox{0.75\columnwidth}{!}{
-    \begin{tikzpicture}[
-        node distance=1.5cm,
-        validator/.style={rectangle, draw, rounded corners, fill=blue!5, minimum width=2.2cm, minimum height=1cm, align=center, font=\scriptsize},
-        observer/.style={rectangle, draw, rounded corners, fill=gray!5, minimum width=2cm, minimum height=1cm, align=center, font=\scriptsize},
-        cp/.style={rectangle, draw, rounded corners, thick, fill=white, minimum width=3.5cm, minimum height=1.2cm, align=center, font=\scriptsize},
-        groupbox/.style={draw, dashed, thick, inner sep=0.5cm, gray!60},
-        arrow/.style={-latex, thick},
-        line/.style={draw, -latex, thick}
-    ]
-
-        % --- Bottom: Observer Nodes ---
-        \node[observer] (O3) at (0, 0) {Observer 3\\(Gundar)};
-        \node[observer] (O2) [left=0.5cm of O3] {Observer 2\\(UNUD)};
-        \node[observer] (O1) [left=0.5cm of O2] {Observer 1\\(UT)};
-        \node[observer] (O4) [right=0.5cm of O3] {Observer 4\\(UNIMED)};
-        \node[observer] (O5) [right=0.5cm of O4] {Observer 5\\(UNDIP)};
-
-        % Observer P2P Connections (Gossip)
-        \draw[<->, gray, thin] (O1) -- (O2);
-        \draw[<->, gray, thin] (O2) -- (O3);
-        \draw[<->, gray, thin] (O3) -- (O4);
-        \draw[<->, gray, thin] (O4) -- (O5);
-
-        % Observer Group Box
-        \node[draw, dashed, thick, gray!60, fit=(O1) (O5), inner sep=0.4cm] (obs_group) {};
-        \node[anchor=north, font=\scriptsize\bfseries] at (obs_group.north) {Observer Nodes};
-
-        % --- Middle: Control Plane ---
-        \node[cp] (CP) at (0, 3) {Control Plane\\(Caliper + Monitor)};
-
-        % --- Top: Validator Nodes ---
-        \begin{scope}[yshift=8cm]
-            \node[validator] (V2) at (0, 2.2) {Validator 2\\(ITB)};
-            \node[validator] (V1) at (3.5, 0.5) {Validator 1\\(UGM)};
-            \node[validator] (V3) at (-3.5, 0.5) {Validator 3\\(UI)};
-            \node[validator] (V5) at (2, -1.8) {Validator 5\\(ITS)};
-            \node[validator] (V4) at (-2, -1.8) {Validator 4\\(UB)};
-
-            % Validator Bidirectional Ring
-            \draw[<->, thick] (V1) -- (V2);
-            \draw[<->, thick] (V2) -- (V3);
-            \draw[<->, thick] (V3) -- (V4);
-            \draw[<->, thick] (V4) -- (V5);
-            \draw[<->, thick] (V5) -- (V1);
-
-            % Validator Group Box
-            \node[draw, dashed, thick, gray!60, fit=(V1) (V2) (V3) (V4) (V5), inner sep=0.5cm, minimum height=5.5cm] (val_group) {};
-            \node[anchor=north, font=\scriptsize\bfseries] at (val_group.north) {Validator Nodes};
-        \end{scope}
-
-        % --- Connections ---
-        \draw[<->, thick] (CP) -- (obs_group.north) node[midway, right, font=\scriptsize] {RPC Load};
-        \draw[arrow] (obs_group.west) .. controls (-6, 2) and (-6, 6) .. (val_group.west);
-        \draw[arrow] (obs_group.east) .. controls (6, 2) and (6, 6) .. (val_group.east);
-        \draw[dashed, arrow] (CP) -- (val_group.south);
-
-    \end{tikzpicture}
-    }
-    \caption{Experimental Topology: 10 Nodes with Distributed Infrastructure}
-    \label{fig:experimental_topology}
+    \includegraphics[width=0.95\columnwidth]{testbed_architecture.png}
+    \caption{Testbed Infrastructure Architecture: Distribution of Software Components Across VPS Instances}
+    \label{fig:testbed_architecture}
 \end{figure}
 
 \subsection{Benchmarking Scenarios}
 
-Five main scenarios were applied to test various performance aspects:
+Six main scenarios were applied to test various performance aspects following the 6-Layer Benchmarking Strategy:
 
 \begin{enumerate}
-    \item \textbf{Throughput Capacity (Step Load)}: Find system saturation point (knee point) by gradually increasing TPS load (5, 10, ..., 100 TPS) until latency spikes drastically
-    \item \textbf{Fixed Load (Baseline)}: Measure maximum theoretical capacity without send delay by maintaining fixed transaction queue (backlog 20 tx) for 180 seconds
-    \item \textbf{Worker Scalability}: Test concurrent client handling efficiency by running optimal TPS load with variations of 1, 3, and 5 workers
-    \item \textbf{Read Intensive}: Measure read operation (RPC) performance dominant in real applications with high read loads (200, 400, 600 TPS) on existing data
-    \item \textbf{Functional Lifecycle \& Stability}: Test full function (Mint-Read-Burn) and long-term stability through Soak Test for 15 minutes at 60\% optimal load
+    \item \textbf{Baseline Performance}: Measure intrinsic system latency under minimal load to establish baseline metrics
+    \item \textbf{Stress Testing (Step Load)}: Find system saturation point (knee point) by gradually increasing TPS load (5, 10, ..., 100 TPS) until latency spikes drastically
+    \item \textbf{Scalability Testing}: Test concurrent client handling efficiency by running optimal TPS load with variations of 1, 3, and 5 workers, and measure read operation (RPC) performance with high read loads (200, 400, 600 TPS)
+    \item \textbf{Resource Efficiency}: Measure computational resource usage (CPU, RAM, Disk I/O, Network) to evaluate infrastructure efficiency
+    \item \textbf{Resilience \& Stability (Soak Test)}: Test long-term stability through Soak Test for 15 minutes at 60\% optimal load to detect cumulative performance degradation
+    \item \textbf{Functional Lifecycle}: Validate data consistency through complete transaction lifecycle (Mint-Read-Burn)
 \end{enumerate}
 
 \subsection{Metrics}
@@ -203,6 +150,15 @@ The monitoring system was built using Prometheus collecting metrics from three s
     \item \textbf{Hyperledger Caliper}: Transaction metrics (TPS, Latency, Errors) sent via Pushgateway
 \end{enumerate}
 Data was stored in PostgreSQL for further analysis.
+
+The high-level architecture of Hyperledger Caliper used in this research is illustrated in Figure \ref{fig:caliper_architecture}. The architecture shows the workflow from configuration inputs (Workload Module, Benchmark Configuration, Network Configuration) through the Caliper engine to the System Under Test (SUT), producing benchmark reports as output \cite{hyperledger_caliper}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\columnwidth]{caliper_architecture.png}
+    \caption{High-level Architecture of Hyperledger Caliper (Source: Official Documentation)}
+    \label{fig:caliper_architecture}
+\end{figure}
 
 \section{Results and Discussion}
 
@@ -254,7 +210,7 @@ Efficiency was measured based on TPS ratio per percent CPU usage, and scalabilit
 
 Data shows an interesting phenomenon where PoS actually achieves higher saturation throughput than PoA at 10 Nodes scale. This is suspected to be caused by Block Time limitations. PoA with 5-second blocks has a physical limit on gas amount/block per time unit. Conversely, PoS with 12-second slots, although the interval is longer, allows more efficient transaction batching with the same gas limit per block, producing higher aggregate throughput before RPC saturation.
 
-PoA shows clear superiority in responsiveness aspect. PoA average latency (4.6 seconds) is very close to block time (5 seconds), showing minimal inefficency. Conversely, PoS (8 seconds) suffers from inherent latency from slot mechanism and initial probabilistic finality. For academic service systems, this 3--4 second difference is significant in terms of UX (User Experience).
+PoA shows clear superiority in responsiveness aspect. PoA average latency (4.6 seconds) is very close to block time (5 seconds), showing minimal inefficiency. Conversely, PoS (8 seconds) suffers from inherent latency from slot mechanism and initial probabilistic finality. For academic service systems, this 3--4 second difference is significant in terms of UX (User Experience).
 
 PoA excels in resource efficiency. PoS "pays" for its decentralization with expensive computation for attestation. Both systems' stability proved robust in long-term testing (Soak Test), with no indication of memory leaks found.
 
